@@ -1,0 +1,73 @@
+/*
+ * fsm.c
+ *
+ *  Created on: Nov 5, 2022
+ *      Author: shiba
+ */
+
+#include"fsm.h"
+
+void fsm_run() {
+	switch (status) {
+	case INIT:
+		display7SEG(time);
+		setTimer1(1000);
+		status = AUTO_MODE;
+	case AUTO_MODE:
+		//TODO
+		if (time > 0 && timer1_flag == 1) {
+			setTimer1(1000);
+			display7SEG(time);
+			time--;
+		}
+		//Change mode
+		if (is_button_pressed(1)) {
+			setTimer0(10000);
+			status = INC;
+			display7SEG(num)
+			time++;
+		}
+		if (is_button_pressed(2)) {
+			setTimer0(10000);
+			status = DEC;
+			time--;
+		}
+		break;
+	case INC:
+		//TODO
+		if (is_button_pressed(1)) {
+			setTimer0(10000);
+			time++;
+		}
+		//Change mode
+		if (timer0_flag == 1) {
+			timer0_flag = 0;
+			status = AUTO_MODE;
+		}
+		if (is_button_pressed(2)) {
+			setTimer0(10000);
+			time--;
+			status = DEC;
+		}
+		break;
+	case DEC:
+		//TODO
+		if (is_button_pressed(2)) {
+			setTimer0(10000);
+			time--;
+		}
+		//Change mode
+		if (timer0_flag == 1) {
+			timer0_flag = 0;
+			status = AUTO_MODE;
+		}
+		if (is_button_pressed(0)) {
+			setTimer0(10000);
+			time++;
+			status = INC;
+		}
+		break;
+	default:
+		break;
+	}
+}

@@ -1,0 +1,46 @@
+/*
+ * fsm_long.c
+ *
+ *  Created on: Nov 5, 2022
+ *      Author: shiba
+ */
+
+#include"fsm_long.h"
+
+void fsm_long_run() {
+	switch (status) {
+	case INC_LONG:
+		//TODO
+		if (is_button_pressed1s(1)) {
+			time++;
+			if (time > 9)
+				time = 0;
+			display7SEG(time);
+		}
+		//Change mode
+		//Change mode from INC_LONG to INC
+		if (is_button_pressed(1)) {
+			time++;
+			if (time > 9)
+				time = 0;
+			display7SEG(time);
+		}
+		//Change mode from INC_LONG to DEC
+
+		//Reset time
+		is_press_reset();
+		break;
+	case DEC_LONG:
+		//TODO
+		if (is_button_pressed1s(2)) {
+			time--;
+			if (time < 0)
+				time = 9;
+			display7SEG(time);
+		}
+		//Change mode
+		break;
+	default:
+		break;
+	}
+}

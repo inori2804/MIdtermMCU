@@ -1,0 +1,24 @@
+/*
+ * global.h
+ *
+ *  Created on: Nov 3, 2022
+ *      Author: shiba
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#define RED				100
+#define GREEN			101
+#define YELLOW			102
+
+#define MODIFY_MODE 	1999
+#define AUTO_MODE		2000
+
+extern int status;
+
+extern int time_red;
+extern int time_green;
+extern int time_yellow;
+
+#endif /* INC_GLOBAL_H_ */

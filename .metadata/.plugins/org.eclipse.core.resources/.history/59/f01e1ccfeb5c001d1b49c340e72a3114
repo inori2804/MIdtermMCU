@@ -1,0 +1,20 @@
+/*
+ * global.h
+ *
+ *  Created on: Nov 3, 2022
+ *      Author: shiba
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#define INIT		1
+#define AUTO_MODE	2
+#define INC_MODE	3
+#define DEC_MODE	4
+
+extern int status;
+
+extern int time;
+
+#endif /* INC_GLOBAL_H_ */
